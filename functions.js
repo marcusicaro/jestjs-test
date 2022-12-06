@@ -12,34 +12,9 @@ function reverseString(string) {
 }
 
 function ceaserCipher(string, shift) {
-  let lowerCaseString = string.toLowerCase();
+  const lowerCaseString = string.toLowerCase();
   const encryptArray = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'x',
-    'w',
-    'y',
-    'z',
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'x', 'w', 'y', 'z',
   ];
   let resultString = '';
 
@@ -48,8 +23,17 @@ function ceaserCipher(string, shift) {
       resultString += lowerCaseString[i];
       continue;
     }
-    let index = encryptArray.indexOf(lowerCaseString[i]);
+    const index = encryptArray.indexOf(lowerCaseString[i]);
     let finalShift = index + shift;
+    if (string[i] !== lowerCaseString[i]) {
+      if (finalShift > 25) {
+        finalShift = (finalShift % 25) - 1;
+        resultString += encryptArray[finalShift].toUpperCase();
+        continue;
+      }
+      resultString += encryptArray[finalShift].toUpperCase();
+      continue;
+    }
     if (finalShift > 25) {
       finalShift = (finalShift % 25) - 1;
       resultString += encryptArray[finalShift];
@@ -85,7 +69,11 @@ function analyzeArray(array) {
   });
   average = Math.round(average / array.length);
 
-  return { average, min, max, length };
+  return {
+    average, min, max, length,
+  };
 }
 
-module.exports = { capitalize, reverseString, ceaserCipher, analyzeArray };
+module.exports = {
+  capitalize, reverseString, ceaserCipher, analyzeArray,
+};

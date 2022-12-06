@@ -1,10 +1,9 @@
-// import { it } from 'node:test';
-import {
-  capitalize,
-  reverseString,
-  ceaserCipher,
-  analyzeArray,
-} from './functions';
+const { capitalize } = require('./functions');
+const { reverseString } = require('./functions');
+const { ceaserCipher } = require('./functions');
+const { analyzeArray } = require('./functions');
+
+// console.log(capitalize);
 
 it('Testing capitalize function', () => {
   expect(capitalize('something')).toBe('Something');
@@ -15,7 +14,7 @@ it('Testing reverse string', () => {
 });
 
 it('Testing ceaser cypher characters - II', () => {
-  expect(ceaserCipher('z..ABC', 1)).toBe('a..bcd');
+  expect(ceaserCipher('z..ABCZZ', 1)).toBe('a..BCDAA');
 });
 
 it('Testing analyze array', () => {
